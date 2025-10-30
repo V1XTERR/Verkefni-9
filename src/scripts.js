@@ -36,7 +36,7 @@ async function onSubmitHandler(e) {
 
     const resultitems = el('li', {}, query)
     resultsElement.appendChild(resultitems)
-}
+    
 
 const fromElement = el(
     "form",

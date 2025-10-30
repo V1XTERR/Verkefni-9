@@ -17,22 +17,24 @@ inputElement.setAttribute('name', 'query')
 
 /**
  *
- *  @param {SubmitEvent} e  Form submit event.
+ *  @param {Event} e  Form submit event.
  * 
  */
 
-
-function onSubmitHandler(e) {
+async function onSubmitHandler(e) {
     e.preventDefault();
     empty(resultsElement);
-
+}
 
 
     const query = inputElement.value;
-
     statusElement.textContent = `Leitað að: ${query}...`;
 
-    const resultitems = el('li', {}, "Leitaði að" + query)
+    await sleep (0.5);
+    const results = await search(query);
+    statusElement.textContent = `Leitarniðurstöður fyrir ${query}.`;
+
+    const resultitems = el('li', {}, query)
     resultsElement.appendChild(resultitems)
 }
 
